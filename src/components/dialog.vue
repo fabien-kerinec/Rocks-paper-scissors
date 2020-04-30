@@ -1,7 +1,7 @@
 <template>
   <v-dialog v-model="dialogPseudo" max-width="500px" persistent>
     <v-card text-xs-center>
-      <v-img :src="require('@/assets/joystick.png')" height="100px"> </v-img>
+      <v-img :src="require('@/assets/joystick.png')" height="100px"></v-img>
       <v-card-title>
         <h3>{{ $t('username.title') }}</h3>
       </v-card-title>
@@ -9,15 +9,21 @@
       <v-card-text style="padding-top:0">
         <v-container grid-list-md text-xs-center>
           <v-layout row wrap>
-            <v-flex xs6>
+            <v-flex xs4>
               <v-btn depressed :disabled="locale == 'fr'" @click="changeLocal('fr')">
                 <span class="flag-icon flag-icon-fr mr-2"></span>
                 Français
               </v-btn>
             </v-flex>
-            <v-flex xs6>
+            <v-flex xs4>
               <v-btn depressed :disabled="locale == 'en'" @click="changeLocal('en')">
                 <span class="flag-icon flag-icon-gb mr-2"></span>
+                English
+              </v-btn>
+            </v-flex>
+            <v-flex xs4>
+              <v-btn depressed :disabled="locale == 'it'" @click="changeLocal('it')">
+                <span class="flag-icon flag-icon-it mr-2"></span>
                 English
               </v-btn>
             </v-flex>
@@ -42,9 +48,12 @@
           ></v-text-field>
 
           <div class="text-xs-center">
-            <v-btn depressed color="primary" :disabled="!validPseudo" @click="changePseudo()">
-              {{ $t('username.submit') }}
-            </v-btn>
+            <v-btn
+              depressed
+              color="primary"
+              :disabled="!validPseudo"
+              @click="changePseudo()"
+            >{{ $t('username.submit') }}</v-btn>
             <v-btn text @click="myPseudo = ''">{{ $t('username.clear') }}</v-btn>
           </div>
         </v-form>

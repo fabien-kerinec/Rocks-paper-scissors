@@ -23,7 +23,7 @@ module.exports = {
   },
   qrcode: {
     title: 'Invite Player with QRCode',
-    description: 'Scan the QRCode for play with me !'
+    description: 'Scan the QRCode to play with me !'
   },
   game: {
     title: 'Game',
