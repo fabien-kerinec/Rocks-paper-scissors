@@ -1,6 +1,6 @@
 <template>
-  <v-card>
-    <v-toolbar color="primary" text>
+  <v-card dark>
+    <v-toolbar dark color="primary" text>
       <v-toolbar-title>{{ $t('qrcode.title') }}</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-toolbar>
@@ -39,7 +39,7 @@ export default {
       this.qrcode = new qrious({
         element: document.getElementById('qrcode'),
         level: 'H',
-        size: 300,
+        size: 200,
         value: this.link
       });
     }

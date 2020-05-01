@@ -9,28 +9,19 @@ import store from './store';
 import 'vuetify/dist/vuetify.min.css';
 import Translate from './lang/index';
 
-// const colors = require('vuetify/es5/util/colors').default;
+const colors = require('vuetify/es5/util/colors').default;
 
 const VuetifyOption = {
   dark: true,
   themes: {
-    light: {
-      primary: '#1976D2',
-      secondary: '#424242',
-      accent: '#82B1FF',
-      error: '#FF5252',
-      info: '#2196F3',
-      success: '#4CAF50',
-      warning: '#FB8C00'
-    },
     dark: {
-      primary: '#2196F3',
-      secondary: '#424242',
-      accent: '#FF4081',
-      error: '#FF5252',
-      info: '#2196F3',
-      success: '#4CAF50',
-      warning: '#FB8C00'
+      primary: colors.blue.darken2,
+      accent: colors.grey.darken3,
+      secondary: colors.amber.darken3,
+      info: colors.teal.lighten1,
+      warning: colors.amber.base,
+      error: colors.deepOrange.accent4,
+      success: colors.green.accent3
     }
   }
 };
@@ -45,7 +36,7 @@ Vue.config.productionTip = false;
 Vue.use(Vuetify);
 Vue.use(
   new VueSocketIO({
-    debug: true,
+    debug: false,
     connection: process.env.VUE_APP_BACKEND
   })
 );
@@ -53,6 +44,6 @@ new Vue({
   i18n: new VueI18n(i18nOption),
   router,
   store,
-  render: (h) => h(App),
-  vuetify: new Vuetify(VuetifyOption)
+  vuetify: new Vuetify(VuetifyOption),
+  render: (h) => h(App)
 }).$mount('#app');

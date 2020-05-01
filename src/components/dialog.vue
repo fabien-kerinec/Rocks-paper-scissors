@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="dialogPseudo" max-width="500px" persistent>
+  <v-dialog dark v-model="dialogPseudo" max-width="500px" persistent>
     <v-card text-xs-center>
       <v-img :src="require('@/assets/joystick.png')" height="100px"></v-img>
       <v-card-title>
@@ -24,7 +24,7 @@
             <v-flex xs4>
               <v-btn depressed :disabled="locale == 'it'" @click="changeLocal('it')">
                 <span class="flag-icon flag-icon-it mr-2"></span>
-                English
+                Italiano
               </v-btn>
             </v-flex>
           </v-layout>
@@ -66,7 +66,7 @@
 // import qrious from 'qrious';
 
 export default {
-  name: 'dialog',
+  name: 'modalView',
   data() {
     return {
       validPseudo: true,

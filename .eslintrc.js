@@ -19,6 +19,7 @@ module.exports = {
     'new-cap': 'off',
     'no-new': 'off',
     'no-plusplus': 'off',
-    'space-before-function-paren': 'off'
+    'space-before-function-paren': 'off',
+    'array-callback-return': 'off'
   }
 };

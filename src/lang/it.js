@@ -1,6 +1,7 @@
 module.exports = {
   notification: {
-    text: 'ha giocato?'
+    text: 'ha giocato?',
+    textClip: 'Collegamento copiato negli appunti'
   },
   username: {
     title: 'Scegli il tuo username',
@@ -28,6 +29,7 @@ module.exports = {
   game: {
     title: 'Gioco',
     waiting: 'In attesa del concorrente',
+    viewerWaiting: 'In attesa della scelta dei giocatori',
     me: 'Io',
     continue: 'CONTINUARE',
     action: {
