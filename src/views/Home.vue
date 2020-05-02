@@ -253,7 +253,7 @@
               <div
                 dark
                 class="mt-5 mb-2 grey darken-3 d-flex flex-column justify-space-between"
-                v-if="showAction && checkPlayer()"
+                v-if="showAction && checkPlayer"
               >
                 <h2 class="mb-5">{{ $t('game.action.title') }}</h2>
                 <div class="btn" d-flex xs6 align-end>
@@ -481,23 +481,8 @@ export default {
         'fas fa-question'
       ];
       return icon[choice];
-    },
-    checkPlayer() {
-      // console.log('check');
-
-      if (this.game.player) {
-        // console.log('ok');
-
-        this.game.player.forEach((item) => {
-          // console.log(this);
-          if (item.idPlayer === this.me.idPlayer) {
-            return true;
-          }
-          return false;
-        });
-      }
-      return false;
     }
+
     // clickClip() {
     //   console.log('test');
     // }
@@ -510,6 +495,23 @@ export default {
     },
     locale() {
       return this.$i18n.locale;
+    },
+    checkPlayer() {
+      let value = false;
+      if (!this.game.player) {
+        // console.log('ok');
+        return false;
+      }
+
+      this.game.player.forEach((item) => {
+        // console.log(this);
+        if (item.idPlayer === this.me.idPlayer) {
+          console.log('yes');
+          value = true;
+        }
+      });
+
+      return value;
     }
   },
   sockets: {
