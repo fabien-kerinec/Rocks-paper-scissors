@@ -5,7 +5,7 @@
       <v-img :src="require('@/assets/rockPaperScissors.svg')" :aspect-ratio="21 / 9"></v-img>
       <!-- eslint-enable -->
       <v-card-title>
-        <h3>{{ $t('username.title') }}</h3>
+        <h3 style="word-break: break-word;">{{ $t('username.title') }}</h3>
       </v-card-title>
 
       <v-card-text style="padding-top:0">
