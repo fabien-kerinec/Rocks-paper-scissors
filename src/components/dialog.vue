@@ -2,7 +2,7 @@
   <v-dialog dark v-model="dialogPseudo" max-width="700px" persistent>
     <v-card class="grey darken-3" dark text-xs-center>
       <!-- eslint-disable -->
-      <v-img :src="require('@/assets/rockPaperScissors.svg')" :aspect-ratio="21/9"></v-img>
+      <v-img :src="require('@/assets/rockPaperScissors.svg')" :aspect-ratio="21 / 9"></v-img>
       <!-- eslint-enable -->
       <v-card-title>
         <h3>{{ $t('username.title') }}</h3>
@@ -12,19 +12,34 @@
         <v-container grid-list-md text-xs-center>
           <v-layout row wrap>
             <v-flex xs4>
-              <v-btn depressed :disabled="locale == 'fr'" @click="changeLocal('fr')">
+              <v-btn
+                :class="locale === 'fr' ? 'active' : null"
+                depressed
+                :disabled="locale == 'fr'"
+                @click="changeLocal('fr')"
+              >
                 <span class="flag-icon flag-icon-fr mr-2"></span>
                 Français
               </v-btn>
             </v-flex>
             <v-flex xs4>
-              <v-btn depressed :disabled="locale == 'en'" @click="changeLocal('en')">
+              <v-btn
+                :class="locale === 'en' ? 'active' : null"
+                depressed
+                :disabled="locale == 'en'"
+                @click="changeLocal('en')"
+              >
                 <span class="flag-icon flag-icon-gb mr-2"></span>
                 English
               </v-btn>
             </v-flex>
             <v-flex xs4>
-              <v-btn depressed :disabled="locale == 'it'" @click="changeLocal('it')">
+              <v-btn
+                :class="locale === 'it' ? 'active' : null"
+                depressed
+                :disabled="locale == 'it'"
+                @click="changeLocal('it')"
+              >
                 <span class="flag-icon flag-icon-it mr-2"></span>
                 Italiano
               </v-btn>
@@ -50,12 +65,9 @@
           ></v-text-field>
 
           <div class="text-xs-center">
-            <v-btn
-              depressed
-              color="primary"
-              :disabled="!validPseudo"
-              @click="changePseudo()"
-            >{{ $t('username.submit') }}</v-btn>
+            <v-btn depressed color="primary" :disabled="!validPseudo" @click="changePseudo()">{{
+              $t('username.submit')
+            }}</v-btn>
             <v-btn text @click="myPseudo = ''">{{ $t('username.clear') }}</v-btn>
           </div>
         </v-form>
@@ -94,3 +106,9 @@ export default {
   }
 };
 </script>
+<style>
+button.active {
+  background-color: #0eab00 !important;
+  color: #fff !important;
+}
+</style>
