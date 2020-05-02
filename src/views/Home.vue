@@ -448,13 +448,13 @@ export default {
       this.myChoice = choice;
       this.showAction = false;
       switch (choice) {
-        case 1:
+        case 0:
           value = 'pierre';
           break;
-        case 2:
+        case 1:
           value = 'feuille';
           break;
-        case 3:
+        case 2:
           value = 'ciseaux';
           break;
         default:
