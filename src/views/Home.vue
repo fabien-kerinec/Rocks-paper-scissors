@@ -428,6 +428,7 @@ export default {
     });
     /* Animation */
     funcChangeIcon();
+    this.$ga.page('/');
   },
   data() {
     return {
