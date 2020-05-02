@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Vuetify from 'vuetify';
 import VueSocketIO from 'vue-socket.io';
 import VueI18n from 'vue-i18n';
+import VueAnalytics from 'vue-analytics';
 import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
@@ -26,7 +27,9 @@ const VuetifyOption = {
   }
 };
 Vue.use(VueI18n);
-
+Vue.use(VueAnalytics, {
+  id: 'G-SW69Q6Z48L'
+});
 const i18nOption = {
   locale: 'fr',
   messages: Translate

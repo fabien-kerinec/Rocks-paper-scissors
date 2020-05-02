@@ -139,7 +139,8 @@
                             class="btn-copy-link white--text"
                             :data-clipboard-text="sharedLink"
                             color="primary"
-                          >{{ $t('await.clipboard.description') }}</v-btn>
+                            >{{ $t('await.clipboard.description') }}</v-btn
+                          >
                           <!-- eslint-enable -->
                           <!-- <span>{{ $t('await.clipboard.description') }}</span> -->
                         </v-tooltip>
@@ -182,7 +183,8 @@
                   :data-clipboard-text="sharedLink"
                   color="accent"
                   style="text-transform:lowercase;"
-                >copy : {{ sharedLink }}</v-btn>
+                  >copy : {{ sharedLink }}</v-btn
+                >
                 <!-- eslint-enable -->
                 <!-- <v-spacer></v-spacer> -->
               </v-toolbar>
@@ -199,7 +201,8 @@
                           color="primary"
                           text-color="white"
                           v-if="me.idPlayer == player.idPlayer"
-                        >{{ $t('game.me') }}</v-chip>
+                          >{{ $t('game.me') }}</v-chip
+                        >
                       </h3>
                       <v-icon style="font-size: 7em">{{ getIcon(player.choice) }}</v-icon>
                     </div>
@@ -213,12 +216,11 @@
                           color="primary"
                           text-color="white"
                           v-if="me.idPlayer == player.idPlayer"
-                        >{{ $t('game.me') }}</v-chip>
+                          >{{ $t('game.me') }}</v-chip
+                        >
                       </h3>
                       <v-icon style="font-size: 7em" v-if="me.idPlayer == player.idPlayer">
-                        {{
-                        getIcon(myChoice)
-                        }}
+                        {{ getIcon(myChoice) }}
                       </v-icon>
                       <v-icon style="font-size: 7em" v-else>{{ blinkIcon }}</v-icon>
                     </div>
@@ -237,7 +239,8 @@
                       @click="setContinue()"
                       color="primary"
                       class="white--text"
-                    >{{ $t('game.continue') }}</v-btn>
+                      >{{ $t('game.continue') }}</v-btn
+                    >
                   </v-flex>
                 </v-layout>
               </div>
@@ -313,7 +316,9 @@
                     :key="index"
                     style="text-align: left"
                     class="px-5"
-                  >{{ player.pseudo }} : {{ player.point }}</p>
+                  >
+                    {{ player.pseudo }} : {{ player.point }}
+                  </p>
                 </div>
               </div>
             </v-card>
@@ -334,7 +339,7 @@
               <div class="d-flex flex-column pb-3 pt-3 pr-5 pl-5" style="overflow: auto;">
                 <div class="msg mb-0" style="overflow: auto;">
                   <Message
-                    v-for="(message,index) in game.message"
+                    v-for="(message, index) in game.message"
                     :key="`message-${index}`"
                     :name="message.user.pseudo"
                     :text="message.text"
@@ -438,9 +443,25 @@ export default {
   },
   methods: {
     setChoice(choice) {
+      let value;
       this.$socket.emit('choice', { choice });
       this.myChoice = choice;
       this.showAction = false;
+      switch (choice) {
+        case 1:
+          value = 'pierre';
+          break;
+        case 2:
+          value = 'feuille';
+          break;
+        case 3:
+          value = 'ciseaux';
+          break;
+        default:
+          value = 'default';
+          break;
+      }
+      this.$ga.event('GameAction', 'action', value, 123);
     },
     setContinue() {
       this.myChoice = 3;

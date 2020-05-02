@@ -34,9 +34,8 @@ export default {
           },
           () => {
             this.text = '';
-            document.querySelector('.msg').scrollTop = document.querySelector(
-              '.msg'
-            ).scrollHeight;
+            document.querySelector('.msg').scrollTop = document.querySelector('.msg').scrollHeight;
+            this.$ga.event('Message', 'action', 'newMessage', 42);
           }
         );
       }
