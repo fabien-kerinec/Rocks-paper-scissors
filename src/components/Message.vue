@@ -5,11 +5,16 @@
     </div>
     <div v-else class="msg-wrapper">
       <div class="msg" :class="{owner}">
-        <div class="msg__information">
-          <span class="msg__name">{{ name }}</span>
-          <span class="msg__date">{{ time }}</span>
-        </div>
         <p class="msg__text">{{ text }}</p>
+        <div class="msg__information">
+          <!-- eslint-disable -->
+          <p class="msg__name">
+            {{$t('message.send')}} {{$t('message.by')}}
+            <span>{{ name }}</span>
+            {{$t('message.at')}} {{ time }}
+          </p>
+          <!-- eslint-enable -->
+        </div>
       </div>
     </div>
   </div>
@@ -31,7 +36,7 @@ export default {
 .system {
   margin-bottom: 1rem;
   color: #fff;
-
+  font-size: 14px;
   p {
     margin-bottom: 1rem;
   }
@@ -45,7 +50,7 @@ export default {
 .msg {
   padding: 1rem;
   width: 60%;
-  margin: 0 1rem;
+  // margin: 0 1rem;
   box-shadow: 0 1px 0 0 rgba(50, 50, 50, 0.3);
   border-radius: 4px;
   background: #1976d2;
@@ -56,20 +61,39 @@ export default {
 
   &__information {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
+    font-size: 12px;
   }
 
   &__name {
-    font-weight: 700;
+    // font-weight: 700;
+    font-style: italic;
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+    font-size: 12px;
+    span {
+      font-weight: 600;
+    }
   }
 
   &__date {
     text-decoration: underline;
     margin-left: 15px;
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+    font-size: 12px;
   }
 
   &__text {
     margin-bottom: 0;
+    text-align: left;
+    font-size: 17px;
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+    font-size: 16px;
   }
 }
 

@@ -1,6 +1,6 @@
 <template>
   <v-dialog dark v-model="dialogPseudo" max-width="700px" persistent>
-    <v-card text-xs-center>
+    <v-card class="grey darken-3" dark text-xs-center>
       <!-- eslint-disable -->
       <v-img :src="require('@/assets/rockPaperScissors.svg')" :aspect-ratio="21/9"></v-img>
       <!-- eslint-enable -->

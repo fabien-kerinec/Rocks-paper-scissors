@@ -7,6 +7,7 @@
     @click:append="send"
     @keydown.enter="send"
     append-icon="mdi-send-circle-outline"
+    class="mt-5"
   />
 </template>
 
@@ -32,6 +33,9 @@ export default {
           },
           () => {
             this.text = '';
+            document.querySelector('.msg').scrollTop = document.querySelector(
+              '.msg'
+            ).scrollHeight;
           }
         );
       }
@@ -39,3 +43,8 @@ export default {
   }
 };
 </script>
+<style>
+.v-text-field__details {
+  display: none;
+}
+</style>

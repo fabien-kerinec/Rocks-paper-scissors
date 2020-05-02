@@ -37,14 +37,14 @@
         <v-layout row wrap>
           <!-- AWAIT -->
           <v-flex dark xs12 v-if="game.player.length === 1">
-            <v-card dark>
-              <v-toolbar color="primary" dark flat>
+            <v-card class="grey darken-3" dark>
+              <v-toolbar color="primary" flat>
                 <v-toolbar-title>{{ $t('await.title') }}</v-toolbar-title>
                 <v-spacer></v-spacer>
               </v-toolbar>
 
-              <v-card-text primary-title>
-                <div style="margin:auto">
+              <v-card-text primary-title color="grey" dark>
+                <div style="margin:auto" color="grey" dark>
                   <div>
                     <v-avatar size="128px">
                       <!-- <img src="../assets/spinner.gif" /> -->
@@ -166,15 +166,29 @@
           </v-flex>-->
 
           <!-- GAME -->
-          <v-flex dark xs12 sm10 v-if="game.player.length === 2">
-            <v-card dark style="height:100%; display:flex; flex-direction:column; " d-flex>
-              <v-toolbar color="primary" style="flex: initial" dark flat>
+          <div class="flex xs12 sm8" style dark v-if="game.player.length === 2">
+            <v-card
+              class="flex d-flex flex-column grey darken-3 xs12 px-0 pt-0"
+              dark
+              style=" height:100%;"
+            >
+              <v-toolbar color="primary" dark style="max-height:64px">
                 <v-toolbar-title>{{ $t('game.title') }}</v-toolbar-title>
                 <v-spacer></v-spacer>
+                <!-- eslint-disable -->
+
+                <v-btn
+                  class="btn-copy-link white--text"
+                  :data-clipboard-text="sharedLink"
+                  color="accent"
+                  style="text-transform:lowercase;"
+                >copy : {{ sharedLink }}</v-btn>
+                <!-- eslint-enable -->
+                <!-- <v-spacer></v-spacer> -->
               </v-toolbar>
 
               <!-- AWAIT/CONTINUE -->
-              <div class="mt-5 mb-2" v-if="!showAction">
+              <div class="mt-5 mb-2 d-flex flex-column" v-if="!showAction">
                 <h3 v-if="!results.win">{{ $t('game.waiting') }}</h3>
                 <v-layout row wrap>
                   <v-flex xs6 v-for="player in results.player" v-bind:key="player.idPlayer">
@@ -228,14 +242,12 @@
                 </v-layout>
               </div>
               <!-- ACTION -->
-              <v-flex
-                class="pb-3 pt-3"
+              <div
+                dark
+                class="mt-5 mb-2 grey darken-3 d-flex flex-column justify-space-between"
                 v-if="showAction && checkPlayer"
-                d-flex
-                flex-column
-                justify-space-between
               >
-                <h2 class="mb-2">{{ $t('game.action.title') }}</h2>
+                <h2 class="mb-5">{{ $t('game.action.title') }}</h2>
                 <div class="btn" d-flex xs6 align-end>
                   <v-btn
                     large
@@ -270,52 +282,67 @@
                     <v-icon right dark>far fa-hand-scissors</v-icon>
                   </v-btn>
                 </div>
-              </v-flex>
+              </div>
               <div v-else>
                 <h3>{{ $t('game.viewerWaiting') }}</h3>
               </div>
             </v-card>
-          </v-flex>
-
+          </div>
+          <!-- <v-spacer></v-spacer> -->
           <!-- BOTTOM -->
-          <v-flex dark xs12 sm2 v-if="game.player.length === 2">
-            <v-card color="primary" dark>
-              <v-toolbar color="primary" flat>
+          <div dark class="flex d-flex flex-column xs12 sm4" v-if="game.player.length === 2">
+            <v-card
+              class="flex d-flex flex-column grey darken-3 px-0 pt-0"
+              dark
+              style=" height:100%;"
+            >
+              <v-toolbar color="primary" style="max-height:64px">
                 <v-toolbar-title>{{ $t('stats.score') }}</v-toolbar-title>
                 <v-spacer></v-spacer>
               </v-toolbar>
-              <div>
-                <v-list two-line subheader flat style="border-radius:0">
-                  <v-list-item v-for="player in game.player" v-bind:key="player.idPlayer" flat>
-                    <v-list-item-avatar>
-                      <v-icon class="grey lighten-1 white--text">star</v-icon>
-                    </v-list-item-avatar>
-                    <v-list-item-content flat>
-                      <v-list-item-title>{{ player.pseudo }}</v-list-item-title>
-                      <v-list-item-subtitle>{{ player.point }}</v-list-item-subtitle>
-                    </v-list-item-content>
-                  </v-list-item>
-                </v-list>
+              <div class="mt-5 mb-2 grey darken-3" style="flex:1">
+                <div
+                  class="grey darken-3 d-flex flex-column justify-center"
+                  style="height:100%"
+                  dark
+                  two-line
+                  subheader
+                >
+                  <p
+                    v-for="(player, index) in game.player"
+                    :key="index"
+                    style="text-align: left"
+                    class="px-5"
+                  >{{ player.pseudo }} : {{ player.point }}</p>
+                </div>
               </div>
             </v-card>
-          </v-flex>
+          </div>
 
-          <v-flex xs12 v-if="game.player.length === 2" class="justify-space-between">
-            <v-card minHeight="300" maxHeight="700" dark>
+          <v-flex xs12 v-if="game.player.length === 2" class="justify-space-between pb-5 pt-5">
+            <v-card
+              class="d-flex flex-column grey darken-3"
+              style="overflow:hidden"
+              minHeight="300"
+              maxHeight="600"
+              dark
+            >
               <v-toolbar color="primary" flat>
                 <v-toolbar-title>{{ $t('stats.allparty') }}</v-toolbar-title>
                 <v-spacer></v-spacer>
               </v-toolbar>
-              <div class="pb-3 pt-3 align-self-end">
-                <Message
-                  v-for="(message,index) in game.message"
-                  :key="`message-${index}`"
-                  :name="message.user.pseudo"
-                  :text="message.text"
-                  :time="message.time"
-                  :owner="message.user.idPlayer === me.idPlayer"
-                  :type="message.type"
-                />
+              <div class="d-flex flex-column pb-3 pt-3 pr-5 pl-5" style="overflow: auto;">
+                <div class="msg mb-0" style="overflow: auto;">
+                  <Message
+                    v-for="(message,index) in game.message"
+                    :key="`message-${index}`"
+                    :name="message.user.pseudo"
+                    :text="message.text"
+                    :time="message.time"
+                    :owner="message.user.idPlayer === me.idPlayer"
+                    :type="message.type"
+                  />
+                </div>
                 <ChatForm :user="me" />
               </div>
             </v-card>

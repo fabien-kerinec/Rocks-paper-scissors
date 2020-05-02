@@ -43,5 +43,10 @@ module.exports = {
     score: 'Score',
     allparty: 'Chat',
     text: 'Not yet online'
+  },
+  message: {
+    send: 'sent',
+    by: 'by',
+    at: 'at'
   }
 };

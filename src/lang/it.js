@@ -43,5 +43,10 @@ module.exports = {
     score: 'Punteggio',
     allparty: 'Chat',
     text: 'Non ancora online'
+  },
+  message: {
+    send: 'inviato',
+    by: 'da',
+    at: 'alle'
   }
 };
