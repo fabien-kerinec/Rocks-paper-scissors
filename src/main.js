@@ -28,12 +28,7 @@ const VuetifyOption = {
 };
 Vue.use(VueI18n);
 Vue.use(VueAnalytics, {
-  id: 'UA-57972376-8',
-  debug: {
-    enabled: true, // default value
-    trace: true, // default value
-    sendHitTask: true // default value
-  }
+  id: 'UA-57972376-8'
 });
 const i18nOption = {
   locale: 'fr',
