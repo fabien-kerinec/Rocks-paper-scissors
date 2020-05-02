@@ -18,6 +18,7 @@
                 depressed
                 color="primary"
                 @click="changeLocal('fr')"
+                style="width: 100%;"
               >
                 <span class="flag-icon flag-icon-fr mr-2"></span>
                 Français
@@ -28,6 +29,7 @@
                 :class="locale === 'en' ? 'active' : null"
                 color="primary"
                 @click="changeLocal('en')"
+                style="width: 100%;"
               >
                 <span class="flag-icon flag-icon-gb mr-2"></span>
                 English
@@ -38,6 +40,7 @@
                 :class="locale === 'it' ? 'active' : null"
                 @click="changeLocal('it')"
                 color="primary"
+                style="width: 100%;"
               >
                 <span class="flag-icon flag-icon-it mr-2"></span>
                 Italiano
@@ -106,9 +109,9 @@ export default {
 };
 </script>
 <style scoped>
-button.v-btn {
-  width: 100%;
-}
+/* button.v-btn {
+
+} */
 button.v-btn.active,
 .theme--dark.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
   background-color: #0eab00 !important;

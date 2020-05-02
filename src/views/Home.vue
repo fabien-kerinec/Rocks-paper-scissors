@@ -46,7 +46,7 @@
               <v-card-text primary-title color="grey" dark>
                 <div style="margin:auto" color="grey" dark>
                   <div>
-                    <v-avatar size="128px">
+                    <v-avatar size="256px">
                       <!-- <img src="../assets/spinner.gif" /> -->
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -127,8 +127,11 @@
                   <div class="text-xs-center">{{ $t('await.invite') }}</div>
                   <div class="text-xs-center">{{ $t('await.warning') }}</div>
                   <v-spacer></v-spacer>
-                  <div class="bot d-flex flex xs6 justify-space-around align-center mt-10 mx-auto">
-                    <div class="left">
+                  <!-- eslint-disable -->
+                  <div
+                    class="bot d-flex flex xs12 sm10 justify-space-around align-center mt-10 mx-auto flex-wrap"
+                  >
+                    <div class="left d-flex flex flex-column xs12 sm6">
                       <div class="mt-3">
                         <v-tooltip top>
                           <!-- eslint-disable -->
@@ -136,9 +139,10 @@
                             slot="activator"
                             slot-scope="{ on }"
                             depressed
-                            class="btn-copy-link white--text"
+                            class="btn-copy-link white--text xs12"
                             :data-clipboard-text="sharedLink"
                             color="primary"
+                            style="width:100%"
                             >{{ $t('await.clipboard.description') }}</v-btn
                           >
                           <!-- eslint-enable -->
@@ -152,10 +156,11 @@
                         </v-tooltip>-->
                       </div>
                     </div>
-                    <div class="right">
+                    <div class="right d-flex flex flex-column xs12 sm6">
                       <qrcode-view dark :link="sharedLink"></qrcode-view>
                     </div>
                   </div>
+                  <!-- eslint-enable -->
                 </div>
               </v-card-text>
             </v-card>
