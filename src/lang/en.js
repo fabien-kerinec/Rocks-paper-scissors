@@ -29,7 +29,7 @@ module.exports = {
   game: {
     title: 'Game',
     waiting: 'Waiting for your opponent',
-    viewerWaiting: 'Awaiting players selection',
+    viewerWaiting: 'Your are a viewer',
     me: 'Me',
     continue: 'CONTINUE',
     action: {
