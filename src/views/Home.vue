@@ -248,7 +248,7 @@
               <div
                 dark
                 class="mt-5 mb-2 grey darken-3 d-flex flex-column justify-space-between"
-                v-if="showAction && checkPlayer"
+                v-if="showAction && !checkPlayer"
               >
                 <h2 class="mb-5">{{ $t('game.action.title') }}</h2>
                 <div class="btn" d-flex xs6 align-end>

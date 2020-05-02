@@ -11,34 +11,33 @@
       <v-card-text style="padding-top:0">
         <v-container grid-list-md text-xs-center>
           <v-layout row wrap>
-            <v-flex xs4>
+            <v-flex xs12 sm4>
               <v-btn
+                class="xs-12"
                 :class="locale === 'fr' ? 'active' : null"
                 depressed
-                :disabled="locale == 'fr'"
+                color="primary"
                 @click="changeLocal('fr')"
               >
                 <span class="flag-icon flag-icon-fr mr-2"></span>
                 Français
               </v-btn>
             </v-flex>
-            <v-flex xs4>
+            <v-flex xs12 sm4>
               <v-btn
                 :class="locale === 'en' ? 'active' : null"
-                depressed
-                :disabled="locale == 'en'"
+                color="primary"
                 @click="changeLocal('en')"
               >
                 <span class="flag-icon flag-icon-gb mr-2"></span>
                 English
               </v-btn>
             </v-flex>
-            <v-flex xs4>
+            <v-flex xs12 sm4>
               <v-btn
                 :class="locale === 'it' ? 'active' : null"
-                depressed
-                :disabled="locale == 'it'"
                 @click="changeLocal('it')"
+                color="primary"
               >
                 <span class="flag-icon flag-icon-it mr-2"></span>
                 Italiano
@@ -65,7 +64,7 @@
           ></v-text-field>
 
           <div class="text-xs-center">
-            <v-btn depressed color="primary" :disabled="!validPseudo" @click="changePseudo()">{{
+            <v-btn color="primary" :disabled="!validPseudo" @click="changePseudo()">{{
               $t('username.submit')
             }}</v-btn>
             <v-btn text @click="myPseudo = ''">{{ $t('username.clear') }}</v-btn>
@@ -106,7 +105,16 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
+button.v-btn {
+  width: 100%;
+}
+button.v-btn.active,
+.theme--dark.v-btn.v-btn--disabled:not(.v-btn--flat):not(.v-btn--text):not(.v-btn--outlined) {
+  background-color: #0eab00 !important;
+  color: #fff !important;
+  pointer-events: none;
+}
 button.active {
   background-color: #0eab00 !important;
   color: #fff !important;
