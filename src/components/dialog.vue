@@ -99,6 +99,7 @@ export default {
     },
     changeLocal(local) {
       this.$i18n.locale = local;
+      this.$ga.event('lang', 'choose', local, 41);
     }
   },
   computed: {
