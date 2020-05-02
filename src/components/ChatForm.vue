@@ -29,7 +29,8 @@ export default {
           {
             text: this.text,
             user: this.user,
-            type: 'normal'
+            type: 'normal',
+            time: new Date().toString().slice(15, 24)
           },
           () => {
             this.text = '';
