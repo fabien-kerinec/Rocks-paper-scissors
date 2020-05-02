@@ -361,7 +361,7 @@
       <v-layout row wrap justify-center>
         <v-flex xs12 py-3 text-xs-center white--text>
           &copy;2020 —
-          <strong>fabien</strong> - Fabien KERINEC
+          <a href="https://github.com/fabien-kerinec"><strong>fabien</strong></a> - Fabien KERINEC
         </v-flex>
       </v-layout>
     </v-footer>
@@ -524,3 +524,12 @@ export default {
   }
 };
 </script>
+<style>
+a {
+  text-decoration: none;
+  color: inherit !important;
+}
+a:visited {
+  color: inherit !important;
+}
+</style>
