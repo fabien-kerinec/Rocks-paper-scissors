@@ -1,7 +1,9 @@
 <template>
-  <v-dialog dark v-model="dialogPseudo" max-width="500px" persistent>
+  <v-dialog dark v-model="dialogPseudo" max-width="700px" persistent>
     <v-card text-xs-center>
-      <v-img :src="require('@/assets/joystick.png')" height="100px"></v-img>
+      <!-- eslint-disable -->
+      <v-img :src="require('@/assets/rockPaperScissors.svg')" :aspect-ratio="21/9"></v-img>
+      <!-- eslint-enable -->
       <v-card-title>
         <h3>{{ $t('username.title') }}</h3>
       </v-card-title>

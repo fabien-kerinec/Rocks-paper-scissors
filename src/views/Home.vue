@@ -3,17 +3,31 @@
     <v-content dark v-if="render">
       <!-- Notification -->
       <v-snackbar
+        :bottom="'top' === 'bottom'"
+        color="success"
+        :left="null === 'left'"
+        :right="'right' === 'right'"
+        :top="'top' === 'top'"
+        vertical="vertical"
         :timeout="2000"
-        color="info"
-        :bottom="true"
         v-model="snackbar"
-      >{{ haveChoice.pseudo }} {{ $t('notification.text') }}</v-snackbar>
+      >
+        {{ haveChoice.pseudo }} {{ $t('notification.text') }}
+        <v-btn dark text @click="snackbar = false">Close</v-btn>
+      </v-snackbar>
       <v-snackbar
+        :bottom="'top' === 'bottom'"
+        color="success"
+        :left="null === 'left'"
+        :right="'right' === 'right'"
+        :top="'top' === 'top'"
+        vertical="vertical"
         :timeout="2000"
-        color="info"
-        :bottom="true"
         v-model="snackbarClipboard"
-      >{{ $t('notification.textClip') }}</v-snackbar>
+      >
+        {{ $t('notification.textClip') }}
+        <v-btn dark text @click="snackbarClipboard = false">Close</v-btn>
+      </v-snackbar>
 
       <!-- Pseudo-->
       <modal-view></modal-view>
@@ -112,38 +126,44 @@
 
                   <div class="text-xs-center">{{ $t('await.invite') }}</div>
                   <div class="text-xs-center">{{ $t('await.warning') }}</div>
-
-                  <div class="mt-3">
-                    <v-tooltip top>
-                      <!-- eslint-disable -->
-                      <v-btn
-                        slot="activator"
-                        slot-scope="{ on }"
-                        depressed
-                        class="btn-copy-link white--text"
-                        :data-clipboard-text="sharedLink"
-                        color="primary"
-                      >{{ $t('await.clipboard.description') }}</v-btn>
-                      <!-- eslint-enable -->
-                      <!-- <span>{{ $t('await.clipboard.description') }}</span> -->
-                    </v-tooltip>
-                  </div>
-                  <div class="text-xs-center">
-                    <p color="accent">{{ sharedLink }}</p>
-                    <!-- <v-tooltip dark top>
-                      <span>{{ $t('await.clipboard.description') }}</span>
-                    </v-tooltip>-->
+                  <v-spacer></v-spacer>
+                  <div class="bot d-flex flex xs6 justify-space-around align-center mt-10 mx-auto">
+                    <div class="left">
+                      <div class="mt-3">
+                        <v-tooltip top>
+                          <!-- eslint-disable -->
+                          <v-btn
+                            slot="activator"
+                            slot-scope="{ on }"
+                            depressed
+                            class="btn-copy-link white--text"
+                            :data-clipboard-text="sharedLink"
+                            color="primary"
+                          >{{ $t('await.clipboard.description') }}</v-btn>
+                          <!-- eslint-enable -->
+                          <!-- <span>{{ $t('await.clipboard.description') }}</span> -->
+                        </v-tooltip>
+                      </div>
+                      <div class="text-xs-center">
+                        <p color="accent">{{ sharedLink }}</p>
+                        <!-- <v-tooltip dark top>
+                        <span>{{ $t('await.clipboard.description') }}</span>
+                        </v-tooltip>-->
+                      </div>
+                    </div>
+                    <div class="right">
+                      <qrcode-view dark :link="sharedLink"></qrcode-view>
+                    </div>
                   </div>
                 </div>
               </v-card-text>
-              <p></p>
             </v-card>
           </v-flex>
 
           <!-- QRCode -->
-          <v-flex dark xs12 v-if="game.player.length === 1">
+          <!-- <v-flex dark xs12 v-if="game.player.length === 1">
             <qrcode-view dark :link="sharedLink"></qrcode-view>
-          </v-flex>
+          </v-flex>-->
 
           <!-- GAME -->
           <v-flex dark xs12 sm10 v-if="game.player.length === 2">
