@@ -28,7 +28,7 @@ const VuetifyOption = {
 };
 Vue.use(VueI18n);
 Vue.use(VueAnalytics, {
-  id: 'G-SW69Q6Z48L',
+  id: 'UA-57972376-8',
   debug: {
     enabled: true, // default value
     trace: true, // default value
