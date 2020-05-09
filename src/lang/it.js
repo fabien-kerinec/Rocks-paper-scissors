@@ -3,10 +3,16 @@ module.exports = {
     text: 'ha giocato?',
     textClip: 'Collegamento copiato negli appunti'
   },
-  username: {
-    title: 'Scegli il tuo username',
-    field: 'Username',
-    submit: 'Invia',
+  homepage: {
+
+    create: 'crea la tua sala giochi',
+    join: 'entrare in una sala giochi',
+    pseudo: 'Username',
+    room: 'Room\'s name',
+    submit: {
+      create: 'Invia',
+      join: 'entrare'
+    },
     clear: 'Cancella',
     errors: {
       required: 'Username obbligatorio',

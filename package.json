@@ -1,6 +1,6 @@
 {
-  "name": "front",
-  "version": "0.1.0",
+  "name": "rocks-paper-scissors",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node server.js",
@@ -19,6 +19,7 @@
     "serve-static": "^1.14.1",
     "vue": "^2.6.11",
     "vue-analytics": "^5.22.1",
+    "vue-beautiful-chat": "^2.3.1",
     "vue-i18n": "^8.17.4",
     "vue-router": "^3.1.6",
     "vue-socket.io": "^3.0.7",

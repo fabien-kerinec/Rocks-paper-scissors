@@ -20,6 +20,8 @@ module.exports = {
     'no-new': 'off',
     'no-plusplus': 'off',
     'space-before-function-paren': 'off',
-    'array-callback-return': 'off'
+    'array-callback-return': 'off',
+    'no-undef': 'off',
+    quotes: 'off'
   }
 };

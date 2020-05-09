@@ -3,10 +3,15 @@ module.exports = {
     text: 'a joué',
     textClip: 'Link copied in the clipboard'
   },
-  username: {
-    title: 'Choisissez votre pseudo',
-    field: 'Pseudo',
-    submit: 'Envoyer',
+  homepage: {
+    create: 'Créez votre partie',
+    join: 'Rejoignez une partie',
+    pseudo: 'Pseudo',
+    room: 'Nom de la room ',
+    submit: {
+      create: 'Envoyer',
+      join: 'Rejoindre'
+    },
     clear: 'Effacer',
     errors: {
       required: "Nom d'utilisateur est nécessaire",

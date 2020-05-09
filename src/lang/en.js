@@ -3,10 +3,15 @@ module.exports = {
     text: 'have played',
     textClip: 'Lien copié dans le presse papier'
   },
-  username: {
-    title: 'Choose your username',
-    field: 'Username',
-    submit: 'Submit',
+  homepage: {
+    create: 'Create your game room',
+    join: 'Join a game room',
+    pseudo: 'Username',
+    room: 'Room\'s name',
+    submit: {
+      create: 'Submit',
+      join: 'Join'
+    },
     clear: 'Clear',
     errors: {
       required: 'Username is required',
@@ -28,6 +33,7 @@ module.exports = {
   },
   game: {
     title: 'Game',
+    roomName: 'Room\'s name',
     waiting: 'Waiting for your opponent',
     viewerWaiting: 'Your are a viewer',
     me: 'Me',

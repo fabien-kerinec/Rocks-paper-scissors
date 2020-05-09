@@ -4,7 +4,7 @@
     <v-img :src="require('@/assets/rockPaperScissors.svg')" :aspect-ratio="21 / 9"></v-img>
     <!-- eslint-enable -->
     <v-card-title>
-      <h3 style="word-break: break-word;">{{ $t('homepage.create') }}</h3>
+      <h3 style="word-break: break-word;">{{ $t('homepage.join') }}</h3>
     </v-card-title>
 
     <v-card-text style="padding-top:0">
@@ -60,16 +60,15 @@
           required
         ></v-text-field>
         <v-text-field
-          v-model="myRoom"
-          :rules="[(v) => v.length <= 10 || $t('homepage.errors.length')]"
+          v-model="room"
           counter="10"
           :label="$t('homepage.room')"
-          required
+          readonly
         ></v-text-field>
 
         <div class="text-xs-center">
           <v-btn color="primary" :disabled="!validPseudo" @click="changePseudo()">{{
-            $t('homepage.submit.create')
+            $t('homepage.submit.join')
           }}</v-btn>
           <v-btn text @click="myPseudo = ''">{{ $t('homepage.clear') }}</v-btn>
         </div>
@@ -83,7 +82,7 @@ import { mapState } from 'vuex';
 // import qrious from 'qrious';
 
 export default {
-  name: 'modalView',
+  name: 'dialogCreate',
   data() {
     return {
       validPseudo: true,
@@ -92,19 +91,16 @@ export default {
       myRoom: ''
     };
   },
+  props: {
+    room: String
+  },
   methods: {
-    changePseudo() {
-      if (this.$refs.form.validate() && this.test()) {
-        console.log('valid');
-        this.$store.dispatch('CHANGE_INFO', { user: this.myPseudo, room: this.myRoom });
-      }
-    },
     changeLocal(local) {
       this.$i18n.locale = local;
       this.$ga.event('lang', 'choose', local, 41);
     },
     test() {
-      const check = this.$socket.emit('checkRoom', { room: this.myRoom }, (r) => {
+      const check = this.$socket.emit('checkRoom', { room: this.room }, (r) => {
         if (!r) {
           return true;
         }
@@ -112,6 +108,15 @@ export default {
       });
 
       return check;
+    },
+    joinRoom() {
+      if (this.$refs.form.validate()) {
+        this.$store.dispatch('CHANGE_INFO', { user: this.myPseudo, room: this.room });
+        this.changePseudo();
+      }
+    },
+    changePseudo() {
+      this.$socket.emit('changePseudo', { pseudo: this.myPseudo, session: this.room });
     }
   },
   computed: {
