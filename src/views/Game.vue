@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app dark v-if="game.player">
     <v-container
       grid-list-md
       dark
@@ -40,7 +40,7 @@
       @onType="handleOnType"
       @edit="editMessage"
       style="z-index:100"
-      v-if="game.player.length === 2"
+      v-if="game.player.length > 1"
     >
       <template v-slot:header>
         <div class="sc-header--title">chat</div>
@@ -185,7 +185,7 @@ export default {
         ('0' + m.getUTCMinutes()).slice(-2) +
         ':' +
         ('0' + m.getUTCSeconds()).slice(-2);
-      if (message.data.text.length) {
+      if (message.data.text) {
         const msg = {
           user: this.me,
           type: 'normal',
@@ -256,24 +256,18 @@ export default {
           name: 'default'
         }
       },
-      // participants: [
-      //   {
-      //     id: 'user1',
-      //     name: 'Chat',
-      //     imageUrl: 'https://avatars3.githubusercontent.com/u/1915989?s=230&v=4'
-      //   }
-      // ],
       titleImageUrl: 'https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png',
       newMessagesCount: 0,
       isChatOpen: false,
       showTypingIndicator: '',
       colors: {
         header: {
-          bg: '#1976d2',
+          bg: '#66bb6a',
           text: '#ffffff'
         },
         launcher: {
-          bg: '#1976d2'
+          bg:
+            '#66bb6a                                                                                                 '
         },
         messageList: {
           bg: '#424242'
@@ -321,6 +315,12 @@ export default {
     results(data) {
       this.results = data;
       this.showContinue = true;
+    },
+    newMessage() {
+      console.log('newmless');
+
+      this.newMessagesCount += 1;
+      console.log(this.newMessagesCount);
     }
   }
 };

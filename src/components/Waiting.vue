@@ -105,7 +105,8 @@
                   :data-clipboard-text="link"
                   color="primary"
                   max-width="400"
-                >{{ $t('await.clipboard.description') }}</v-btn>
+                  >{{ $t('await.clipboard.description') }}</v-btn
+                >
                 <!-- eslint-enable -->
                 <!-- <span>{{ $t('await.clipboard.description') }}</span> -->
               </v-tooltip>
@@ -166,8 +167,6 @@ export default {
   },
   methods: {
     generate() {
-      console.log('wow');
-
       this.qrcode = new qrious({
         element: document.getElementById('qrcode'),
         level: 'H',

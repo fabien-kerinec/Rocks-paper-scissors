@@ -251,7 +251,6 @@ export default {
 
       this.game.player.forEach((item) => {
         if (item.idPlayer === this.me.idPlayer) {
-          console.log('yes');
           value = true;
         }
       });
@@ -338,8 +337,6 @@ export default {
       this.showAction = false;
     },
     resetResult() {
-      console.log('yo');
-
       if (!this.checkPlayer) {
         this.results = {};
         this.showAction = true;
