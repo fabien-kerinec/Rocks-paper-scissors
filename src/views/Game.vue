@@ -40,6 +40,7 @@
       @onType="handleOnType"
       @edit="editMessage"
       style="z-index:100"
+      v-if="game.player.length === 2"
     >
       <template v-slot:header>
         <div class="sc-header--title">chat</div>
@@ -268,11 +269,11 @@ export default {
       showTypingIndicator: '',
       colors: {
         header: {
-          bg: '#4e8cff',
+          bg: '#1976d2',
           text: '#ffffff'
         },
         launcher: {
-          bg: '#4e8cff'
+          bg: '#1976d2'
         },
         messageList: {
           bg: '#424242'

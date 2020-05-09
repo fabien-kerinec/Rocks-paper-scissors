@@ -1,6 +1,13 @@
 <template>
-  <v-container grid-list-md mx-auto fill-height d-flex align-start>
-    <v-card class="flex d-flex flex-column xs10 px-2" height="100%" fill-height flat dark>
+  <v-container grid-list-md mx-auto fill-height d-flex align-start class="containerzero">
+    <v-card
+      class="containerfirst flex d-flex flex-column xs12 sm10 px-2"
+      height="100%"
+      min-height=""
+      fill-height
+      flat
+      dark
+    >
       <v-toolbar color="primary" dark style="max-height:64px">
         <v-toolbar-title>{{ $t('game.title') }}</v-toolbar-title>
         <v-spacer></v-spacer>
@@ -119,18 +126,23 @@
           v-if="showAction && checkPlayer()"
         >
           <h2 class="mb-5">{{ $t('game.action.title') }}</h2>
-          <div class="btn" d-flex xs6 align-end>
-            <v-btn large depressed color="info" class="white--text ms-5" @click="setChoice(0)">
+          <div
+            class=" btn d-flex flex-column flex-sm-row justify-center px-5 "
+            d-flex
+            xs6
+            align-end
+          >
+            <v-btn large depressed color="info" class=" white--text btnicon" @click="setChoice(0)">
               {{ $t('game.action.rock') }}
               <v-icon right dark>far fa-hand-rock</v-icon>
             </v-btn>
 
-            <v-btn large depressed color="info" class="white--text ms-5" @click="setChoice(1)">
+            <v-btn large depressed color="info" class="white--text btnicon" @click="setChoice(1)">
               {{ $t('game.action.paper') }}
               <v-icon right dark>far fa-hand-paper</v-icon>
             </v-btn>
 
-            <v-btn large depressed color="info" class="white--text ms-5" @click="setChoice(2)">
+            <v-btn large depressed color="info" class="white--text btnicon" @click="setChoice(2)">
               {{ $t('game.action.scissors') }}
               <v-icon right dark>far fa-hand-scissors</v-icon>
             </v-btn>
@@ -141,12 +153,18 @@
         </div>
       </v-flex>
     </v-card>
-    <v-card class="flex d-flex flex-column xs2 px-2" height="100%" fill-height flat dark>
+    <v-card
+      class=" containerfirst flex d-flex flex-column xs12 sm2 px-2"
+      height="100%"
+      fill-height
+      flat
+      dark
+    >
       <v-toolbar color="primary" style="max-height:64px">
         <v-toolbar-title>{{ $t('stats.score') }}</v-toolbar-title>
         <v-spacer></v-spacer>
       </v-toolbar>
-      <div class="grey darken-3" style="flex:1">
+      <div class="grey darken-3 d-flex flex-column justify-center align-center" style="flex:1">
         <div
           class="grey darken-3 d-flex flex-column justify-center"
           style="height:100%"
@@ -331,4 +349,25 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+@media screen and (max-width: 600px) {
+  .containerzero {
+    height: auto !important;
+  }
+  .containerfirst {
+    min-height: 80vh !important;
+    margin-bottom: 20px !important;
+  }
+  .btnicon {
+    margin-bottom: 15px !important;
+  }
+}
+@media screen and (min-width: 600px) {
+  .containerzero {
+    height: 100% !important;
+  }
+  .btnicon {
+    margin: 0 10px !important;
+  }
+}
+</style>

@@ -14,7 +14,11 @@
   background-color: #1e1e1e;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    height: auto;
+    overflow: auto !important;
+  }
 }
 html,
 body {
@@ -22,6 +26,11 @@ body {
   height: 100%;
   overflow: hidden !important;
   background-color: #1e1e1e;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    height: auto;
+    overflow: auto !important;
+  }
 }
 
 #nav {
@@ -35,5 +44,7 @@ body {
       color: #42b983;
     }
   }
+}
+.v-application--wrap {
 }
 </style>
