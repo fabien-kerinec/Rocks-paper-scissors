@@ -4,8 +4,7 @@ module.exports = {
     textClip: 'Collegamento copiato negli appunti'
   },
   homepage: {
-
-    create: 'crea la tua sala giochi',
+    create: 'Creare o partecipare a un gioco',
     join: 'entrare in una sala giochi',
     pseudo: 'Username',
     room: 'Room\'s name',

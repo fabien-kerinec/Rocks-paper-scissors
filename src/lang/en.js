@@ -4,8 +4,8 @@ module.exports = {
     textClip: 'Lien copié dans le presse papier'
   },
   homepage: {
-    create: 'Create your game room',
-    join: 'Join a game room',
+    create: 'Create or join a game',
+    join: 'Join a game',
     pseudo: 'Username',
     room: 'Room\'s name',
     submit: {

@@ -4,7 +4,7 @@ module.exports = {
     textClip: 'Link copied in the clipboard'
   },
   homepage: {
-    create: 'Créez votre partie',
+    create: 'Créez ou rejoignez une partie',
     join: 'Rejoignez une partie',
     pseudo: 'Pseudo',
     room: 'Nom de la room ',
