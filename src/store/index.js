@@ -23,7 +23,6 @@ export default new Vuex.Store({
     }, data) => {
       await commit('SET_USERNAME', data.user);
       await commit('SET_ROOMNAME', data.room);
-      console.log('test');
       router.push({
         name: "Game",
         params: {

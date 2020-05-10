@@ -322,10 +322,14 @@ export default {
       this.showContinue = true;
     },
     newMessage() {
-      console.log('newmless');
-
-      this.newMessagesCount += 1;
-      console.log(this.newMessagesCount);
+      if (this.game.message) {
+        if (
+          this.game.message[this.game.message.length - 1].user.pseudo !==
+          this.me.pseudo
+        ) {
+          this.newMessagesCount += 1;
+        }
+      }
     }
   }
 };

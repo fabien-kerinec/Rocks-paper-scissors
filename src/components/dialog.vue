@@ -68,9 +68,11 @@
         ></v-text-field>
 
         <div class="text-xs-center">
-          <v-btn color="primary" :disabled="!validPseudo" @click="changePseudo()">{{
+          <v-btn color="primary" :disabled="!validPseudo" @click="changePseudo()">
+            {{
             $t('homepage.submit.create')
-          }}</v-btn>
+            }}
+          </v-btn>
           <v-btn text @click="myPseudo = ''">{{ $t('homepage.clear') }}</v-btn>
         </div>
       </v-form>
@@ -95,8 +97,10 @@ export default {
   methods: {
     changePseudo() {
       if (this.$refs.form.validate() && this.test()) {
-        console.log('valid');
-        this.$store.dispatch('CHANGE_INFO', { user: this.myPseudo, room: this.myRoom });
+        this.$store.dispatch('CHANGE_INFO', {
+          user: this.myPseudo,
+          room: this.myRoom
+        });
       }
     },
     changeLocal(local) {
@@ -104,12 +108,16 @@ export default {
       this.$ga.event('lang', 'choose', local, 41);
     },
     test() {
-      const check = this.$socket.emit('checkRoom', { room: this.myRoom }, (r) => {
-        if (!r) {
-          return true;
+      const check = this.$socket.emit(
+        'checkRoom',
+        { room: this.myRoom },
+        (r) => {
+          if (!r) {
+            return true;
+          }
+          return false;
         }
-        return false;
-      });
+      );
 
       return check;
     }
