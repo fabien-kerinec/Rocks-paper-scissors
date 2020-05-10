@@ -29,7 +29,7 @@
       :close="closeChat"
       :icons="icons"
       :open="openChat"
-      :showEmoji="true"
+      :showEmoji="false"
       :showFile="false"
       :showTypingIndicator="showTypingIndicator"
       :showLauncher="true"
@@ -137,14 +137,16 @@ export default {
           listplayer = this.game.player.map((item) => ({
             id: item.idPlayer,
             name: item.pseudo,
-            imageUrl: 'https://api.adorable.io/avatars/200/5b0a544b7c382892455174aeebafe26f.png'
+            imageUrl:
+              'https://api.adorable.io/avatars/200/5b0a544b7c382892455174aeebafe26f.png'
           }));
         }
         if (this.game.viewer > 0) {
           listviewer = this.game.viewer.map((item) => ({
             id: item.idPlayer,
             name: item.pseudo,
-            imageUrl: 'https://api.adorable.io/avatars/200/5b0a544b7c382892455174aeebafe26f.png'
+            imageUrl:
+              'https://api.adorable.io/avatars/200/5b0a544b7c382892455174aeebafe26f.png'
           }));
         }
       }
@@ -165,7 +167,9 @@ export default {
     sendMessage(text) {
       if (text.length > 0) {
         const msg = text;
-        this.newMessagesCount = this.isChatOpen ? this.newMessagesCount : this.newMessagesCount + 1;
+        this.newMessagesCount = this.isChatOpen
+          ? this.newMessagesCount
+          : this.newMessagesCount + 1;
         this.onMessageWasSent(msg);
       }
     },
@@ -256,7 +260,8 @@ export default {
           name: 'default'
         }
       },
-      titleImageUrl: 'https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png',
+      titleImageUrl:
+        'https://a.slack-edge.com/66f9/img/avatars-teams/ava_0001-34.png',
       newMessagesCount: 0,
       isChatOpen: false,
       showTypingIndicator: '',
