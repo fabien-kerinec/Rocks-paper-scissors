@@ -1,5 +1,59 @@
 <template>
   <v-app dark v-if="game.player">
+    <v-dialog v-model="modalJoin" max-width="290">
+      <v-card>
+        <v-card-text>{{$t('joinGame.text')}}</v-card-text>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="green darken-1" text @click="toggleDialog('no')">
+            {{$t('joinGame.no')}}
+          </v-btn>
+          <v-btn color="green darken-1" text @click="toggleDialog('yes')">
+            {{$t('joinGame.ok')}}
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <v-snackbar
+      :bottom="'top' === 'bottom'"
+      color="info"
+      :left="null === 'left'"
+      :right="'right' === 'right'"
+      :top="'top' === 'top'"
+      vertical="vertical"
+      :timeout="2000"
+      v-model="snackbarClipboardTrue"
+    >
+      {{ $t('joinGame.notificationTrue') }}
+      <v-btn dark text @click="snackbarClipboardTrue = false">Close</v-btn>
+    </v-snackbar>
+    <v-snackbar
+      :bottom="'top' === 'bottom'"
+      color="success"
+      :left="null === 'left'"
+      :right="'right' === 'right'"
+      :top="'top' === 'top'"
+      vertical="vertical"
+      :timeout="2000"
+      v-model="snackbarClipboardTrueYou"
+    >
+      {{ $t('joinGame.notificationTrueYou') }}
+      <v-btn dark text @click="snackbarClipboardTrueYou = false">Close</v-btn>
+    </v-snackbar>
+    <v-snackbar
+      :bottom="'top' === 'bottom'"
+      color="error"
+      :left="null === 'left'"
+      :right="'right' === 'right'"
+      :top="'top' === 'top'"
+      vertical="vertical"
+      :timeout="2000"
+      v-model="snackbarClipboardFalse"
+    >
+      {{ $t('joinGame.notificationFalse') }}
+      <v-btn dark text @click="snackbarClipboardFalse = false">Close</v-btn>
+    </v-snackbar>
     <v-container
       grid-list-md
       dark
@@ -216,7 +270,6 @@ export default {
       // leverage pagination for loading another page of messages
     },
     handleOnType() {
-      console.log('Emit typing event');
     },
     editMessage(message) {
       /* eslint-disable */
@@ -225,6 +278,13 @@ export default {
       mess.data.text = message.data.text;
 
       /* eslint-enable */
+    },
+    toggleDialog(response) {
+      if (response) {
+        this.$socket.emit('joinRoom', this.me);
+      } else {
+        this.modalJoin = false;
+      }
     }
   },
   data() {
@@ -295,11 +355,11 @@ export default {
         }
       },
       alwaysScrollToBottom: false,
-      messageStyling: true
-      //  messageList: [
-      //   { type: 'text', author: 'me', data: { text: 'Say yes!' } },
-      //   { type: 'text', author: 'user1', data: { text: 'No.' } }
-      // ],
+      messageStyling: true,
+      modalJoin: false,
+      snackbarClipboardFalse: false,
+      snackbarClipboardTrue: false,
+      snackbarClipboardTrueYou: false
     };
   },
   sockets: {
@@ -329,6 +389,30 @@ export default {
         ) {
           this.newMessagesCount += 1;
         }
+      }
+    },
+    joinParty() {
+      let test = false;
+      const me = this.me.idPlayer;
+      this.game.player.map((item) => {
+        if (item.idPlayer === me) {
+          test = true;
+        }
+      });
+      if (!test) {
+        this.modalJoin = true;
+      }
+    },
+    disableModal(data) {
+      this.modalJoin = false;
+      if (data.status === 'ok') {
+        if (this.me.idPlayer === data.player) {
+          this.snackbarClipboardTrueYou = true;
+        } else {
+          this.snackbarClipboardTrue = true;
+        }
+      } else if (this.me.idPlayer === data.idPlayer) {
+        this.snackbarClipboardFalse = true;
       }
     }
   }

@@ -53,5 +53,13 @@ module.exports = {
     send: 'inviato',
     by: 'da',
     at: 'alle'
+  },
+  joinGame: {
+    text: 'Un giocatore è rimasto, vuoi unirti al gioco?',
+    ok: 'sì',
+    no: 'no',
+    notificationTrue: "Non puoi più partecipare al gioco",
+    notificationTrueYou: "Ti sei unito al gioco",
+    notificationFalse: "Non puoi più partecipare al gioco"
   }
 };

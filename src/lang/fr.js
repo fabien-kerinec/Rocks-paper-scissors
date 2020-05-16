@@ -53,5 +53,13 @@ module.exports = {
     send: 'envoyé',
     by: 'par',
     at: 'à'
+  },
+  joinGame: {
+    text: 'Il manque un joueur, voulez-vous rejoindre la partie',
+    ok: 'oui',
+    no: 'non',
+    notificationTrue: "Un joueur a rejoins la partie",
+    notificationTrueYou: "Vous avez rejoins la partie",
+    notificationFalse: "Vous ne pouvez plus rejoindre la partie"
   }
 };

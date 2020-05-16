@@ -54,5 +54,13 @@ module.exports = {
     send: 'sent',
     by: 'by',
     at: 'at'
+  },
+  joinGame: {
+    text: 'One player join, would you join the game ?',
+    ok: 'yes',
+    no: 'no',
+    notificationTrue: "A player has joined the game",
+    notificationTrueYou: "You've joined the game",
+    notificationFalse: "You can no longer join the game"
   }
 };

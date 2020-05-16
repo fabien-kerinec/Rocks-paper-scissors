@@ -3,7 +3,7 @@
     <v-card
       class="containerfirst flex d-flex flex-column xs12 sm10 px-2"
       height="100%"
-      min-height=""
+      min-height
       fill-height
       flat
       dark
@@ -43,9 +43,7 @@
                       color="primary"
                       text-color="white"
                       v-if="me.idPlayer == player.idPlayer"
-                    >
-                      {{ $t('game.me') }}
-                    </v-chip>
+                    >{{ $t('game.me') }}</v-chip>
                   </h3>
                   <v-icon style="font-size: 7em">{{ getIcon(player.choice) }}</v-icon>
                 </v-flex>
@@ -68,13 +66,13 @@
                       color="primary"
                       text-color="white"
                       v-if="me.idPlayer == player.idPlayer"
-                    >
-                      {{ $t('game.me') }}
-                    </v-chip>
+                    >{{ $t('game.me') }}</v-chip>
                   </h3>
-                  <v-icon style="font-size: 7em" v-if="me.idPlayer == player.idPlayer">{{
+                  <v-icon style="font-size: 7em" v-if="me.idPlayer == player.idPlayer">
+                    {{
                     getIcon(myChoice)
-                  }}</v-icon>
+                    }}
+                  </v-icon>
                   <v-icon style="font-size: 7em" v-else>{{ blinkIcon }}</v-icon>
                 </v-flex>
               </div>
@@ -91,9 +89,11 @@
               >
                 <h3>
                   {{ player.pseudo }}
-                  <v-chip color="primary" text-color="white" v-if="me.idPlayer == player.idPlayer">
-                    {{ $t('game.me') }}
-                  </v-chip>
+                  <v-chip
+                    color="primary"
+                    text-color="white"
+                    v-if="me.idPlayer == player.idPlayer"
+                  >{{ $t('game.me') }}</v-chip>
                 </h3>
                 <v-icon style="font-size: 7em">{{ getIcon(player.choice) }}</v-icon>
               </v-flex>
@@ -112,9 +112,7 @@
                 v-if="checkPlayer()"
                 color="primary"
                 class="white--text"
-              >
-                {{ $t('game.continue') }}
-              </v-btn>
+              >{{ $t('game.continue') }}</v-btn>
             </v-flex>
           </v-layout>
         </div>
@@ -126,13 +124,8 @@
           v-if="showAction && checkPlayer()"
         >
           <h2 class="mb-5">{{ $t('game.action.title') }}</h2>
-          <div
-            class=" btn d-flex flex-column flex-sm-row justify-center px-5 "
-            d-flex
-            xs6
-            align-end
-          >
-            <v-btn large depressed color="info" class=" white--text btnicon" @click="setChoice(0)">
+          <div class="btn d-flex flex-column flex-sm-row justify-center px-5" d-flex xs6 align-end>
+            <v-btn large depressed color="info" class="white--text btnicon" @click="setChoice(0)">
               {{ $t('game.action.rock') }}
               <v-icon right dark>far fa-hand-rock</v-icon>
             </v-btn>
@@ -154,7 +147,7 @@
       </v-flex>
     </v-card>
     <v-card
-      class=" containerfirst flex d-flex flex-column xs12 sm2 px-2"
+      class="containerfirst flex d-flex flex-column xs12 sm2 px-2"
       height="100%"
       fill-height
       flat
@@ -177,9 +170,7 @@
             :key="index"
             style="text-align: left"
             class="px-5"
-          >
-            {{ player.pseudo }} : {{ player.point }}
-          </p>
+          >{{ player.pseudo }} : {{ player.point }}</p>
         </div>
       </div>
     </v-card>
@@ -293,10 +284,6 @@ export default {
       ];
       return icon[choice];
     }
-
-    // clickClip() {
-    //   console.log('test');
-    // }
   },
   computed: {
     sharedLink() {
@@ -309,13 +296,6 @@ export default {
     }
   },
   sockets: {
-    // connected(data) {
-    //   this.game = data;
-    //   this.render = true;
-    // },
-    // yourID(data) {
-    //   this.me = data;
-    // },
     stats(data) {
       this.stats = data;
       if (!this.checkPlayer) {
