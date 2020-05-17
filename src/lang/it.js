@@ -7,7 +7,7 @@ module.exports = {
     create: 'Creare o partecipare a un gioco',
     join: 'entrare in una sala giochi',
     pseudo: 'Username',
-    room: 'Room\'s name',
+    room: 'Nome della camera',
     submit: {
       create: 'Crea',
       join: 'Entrare'
