@@ -3,16 +3,13 @@
     <v-dialog v-model="modalJoin" max-width="290">
       <v-card>
         <v-card-text>{{$t('joinGame.text')}}</v-card-text>
-
+        <!-- eslint-disable -->
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="green darken-1" text @click="toggleDialog('no')">
-            {{$t('joinGame.no')}}
-          </v-btn>
-          <v-btn color="green darken-1" text @click="toggleDialog('yes')">
-            {{$t('joinGame.ok')}}
-          </v-btn>
+          <v-btn color="green darken-1" text @click="toggleDialog('no')">{{$t('joinGame.no')}}</v-btn>
+          <v-btn color="green darken-1" text @click="toggleDialog('yes')">{{$t('joinGame.ok')}}</v-btn>
         </v-card-actions>
+        <!-- eslint-enable -->
       </v-card>
     </v-dialog>
     <v-snackbar
@@ -99,6 +96,22 @@
       <template v-slot:header>
         <div class="sc-header--title">chat</div>
       </template>
+      <!-- eslint-disable -->
+      <template v-slot:user-avatar="{ message, user }">
+        <div
+          style="border-radius:50%; color: pink; font-size: 15px; line-height:25px; text-align:center;background: tomato; width: 25px !important; height: 25px !important; min-width: 30px;min-height: 30px;margin: 5px; font-weight:bold"
+          v-if="message.type === 'text' && user && user.name"
+        >{{user.name.toUpperCase()[0]}}</div>
+      </template>
+
+      <template v-slot:text-message-body="{ message }">
+        <p style="margin:0; text-align:left;">{{message.data.text}}</p>
+        <small
+          style="display:block; text-align:left;"
+        >by {{message.author}} at {{message.data.meta}}</small>
+      </template>
+
+      <!-- eslint-enable -->
     </beautiful-chat>
 
     <v-footer height="auto" class="grey darken-3">
@@ -269,8 +282,7 @@ export default {
       // called when the user scrolls message list to top
       // leverage pagination for loading another page of messages
     },
-    handleOnType() {
-    },
+    handleOnType() {},
     editMessage(message) {
       /* eslint-disable */
       const mess = this.messageList.find((mess) => mess.id === message.id);
@@ -428,6 +440,10 @@ export default {
   width: 70%;
 }
 .sc-message--text-content {
+  margin-bottom: 10px !important;
+  text-align: left !important;
+}
+.sc-message--meta {
   margin-bottom: 10px !important;
   text-align: left !important;
 }
