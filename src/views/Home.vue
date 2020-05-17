@@ -10,8 +10,9 @@
           <a
             @click="this.$ga.event('github', 'link', local, 41)"
             href="https://github.com/fabien-kerinec"
-            ><strong>fabien</strong></a
           >
+            <strong>fabien</strong>
+          </a>
           - Fabien KERINEC
         </v-flex>
       </v-layout>
@@ -30,6 +31,9 @@ export default {
   },
   computed: {
     ...mapState(['userName', 'roomName'])
+  },
+  mounted() {
+    this.$ga.page('/home');
   }
 };
 </script>
