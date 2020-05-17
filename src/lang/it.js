@@ -9,8 +9,8 @@ module.exports = {
     pseudo: 'Username',
     room: 'Room\'s name',
     submit: {
-      create: 'Invia',
-      join: 'entrare'
+      create: 'Crea',
+      join: 'Entrare'
     },
     clear: 'Cancella',
     errors: {

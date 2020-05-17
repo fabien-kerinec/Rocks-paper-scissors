@@ -9,7 +9,7 @@ module.exports = {
     pseudo: 'Username',
     room: 'Room\'s name',
     submit: {
-      create: 'Submit',
+      create: 'Create',
       join: 'Join'
     },
     clear: 'Clear',

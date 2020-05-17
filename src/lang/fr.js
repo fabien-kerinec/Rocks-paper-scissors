@@ -9,7 +9,7 @@ module.exports = {
     pseudo: 'Pseudo',
     room: 'Nom de la room ',
     submit: {
-      create: 'Envoyer',
+      create: 'Créer',
       join: 'Rejoindre'
     },
     clear: 'Effacer',
@@ -20,7 +20,8 @@ module.exports = {
   },
   await: {
     title: "En attente d'un joueur",
-    invite: 'Pour inviter vos amis, cliquez sur le lien ci-dessous pour le copier ou partagez le sur les réseaux sociaux.',
+    invite:
+      'Pour inviter vos amis, cliquez sur le lien ci-dessous pour le copier ou partagez le sur les réseaux sociaux.',
     warning: 'ATTENTION : Si vous actualisez la page, un nouveau lien sera généré !',
     clipboard: {
       title: 'Presse papier',
@@ -58,8 +59,8 @@ module.exports = {
     text: 'Il manque un joueur, voulez-vous rejoindre la partie',
     ok: 'oui',
     no: 'non',
-    notificationTrue: "Un joueur a rejoins la partie",
-    notificationTrueYou: "Vous avez rejoins la partie",
-    notificationFalse: "Vous ne pouvez plus rejoindre la partie"
+    notificationTrue: 'Un joueur a rejoins la partie',
+    notificationTrueYou: 'Vous avez rejoins la partie',
+    notificationFalse: 'Vous ne pouvez plus rejoindre la partie'
   }
 };
