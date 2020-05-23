@@ -221,7 +221,12 @@ export default {
       return finalList;
     }
   },
+  created() {
+    console.log('created');
+  },
   mounted() {
+    console.log('mounted');
+
     this.$socket.emit('newChan', this.$route.params.idRoom);
     if (this.userName) {
       this.$socket.emit('changePseudo', {
@@ -229,6 +234,9 @@ export default {
         session: this.$route.params.idRoom
       });
     }
+  },
+  destroyed() {
+    console.log('destroyed');
   },
   methods: {
     sendMessage(text) {
